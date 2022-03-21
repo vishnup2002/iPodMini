@@ -1,0 +1,55 @@
+#outerBox{
+    height: 400px;
+    width: 400px;
+    background-color : lightgrey;
+    display : flex;
+    align-items : center;
+    justify-content  : center;
+}
+
+#outerWheel{
+    height : 250px;
+    width : 250px;
+    border-radius: 125px;
+    background-color : white;
+    display : flex;
+    align-items : center;
+    justify-content  : center; 
+    position : relative;
+
+    button{
+        position : absolute;
+        border: none;
+        font-size: 1.8rem;
+        color:rgb(114, 112, 112);
+        
+    }
+}
+
+#left{
+    left:10px;
+    background-color: white;
+}
+
+#right{
+    right:10px;
+    background-color: white;
+}
+
+#up{
+    top:10px;
+    background-color: white;
+}
+
+#down{
+    bottom:10px;
+    background-color: white;
+}
+
+#innerWheel{
+    height: 80px;
+    width : 80px;
+    border-radius : 40px;
+    background-color : rgb(207, 204, 204);
+    
+};

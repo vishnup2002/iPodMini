@@ -1,0 +1,13 @@
+.menuitem{
+    h3{
+        margin: 0;
+    }
+
+    padding: 10px;
+    position: relative;
+
+    .right-arrow{
+        position: absolute;
+        right: 10px;
+    }
+}
