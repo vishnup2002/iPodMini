@@ -1,8 +1,10 @@
 import React from "react";
 import "./MenuItem.scss"
 
-const MenuItem = (props) => {
-    props=props.props;
+const MenuItem = ({props}) => {
+
+
+    // classname=active when highlighted and classname=inactive when not highlighted
     return (
         <div className={((props.active&&"active")||"inactive")+" menuitem"} >
             <h3 style={(props.active && {color:"white"})||{}}>

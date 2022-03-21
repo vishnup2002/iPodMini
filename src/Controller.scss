@@ -1,17 +1,17 @@
 #outerBox{
-    height: 400px;
-    width: 400px;
-    background-color : lightgrey;
+    height: 320px;
+    width: 100%;
+    // background-color : lightgrey;
     display : flex;
     align-items : center;
     justify-content  : center;
 }
 
 #outerWheel{
-    height : 250px;
-    width : 250px;
-    border-radius: 125px;
-    background-color : white;
+    height : 280px;
+    width : 280px;
+    border-radius: 140px;
+    background-color : rgb(235, 232, 232);
     display : flex;
     align-items : center;
     justify-content  : center; 
@@ -22,34 +22,35 @@
         border: none;
         font-size: 1.8rem;
         color:rgb(114, 112, 112);
+        background-color: rgb(235, 232, 232);
         
     }
 }
 
 #left{
-    left:10px;
-    background-color: white;
+    left:20px;
+    
 }
 
 #right{
-    right:10px;
-    background-color: white;
+    right:20px;
+
 }
 
 #up{
-    top:10px;
-    background-color: white;
+    top:20px;
+    font-size: 1.6rem !important;
 }
 
 #down{
-    bottom:10px;
-    background-color: white;
+    bottom:20px;
+
 }
 
 #innerWheel{
-    height: 80px;
-    width : 80px;
-    border-radius : 40px;
-    background-color : rgb(207, 204, 204);
+    height: 100px;
+    width : 100px;
+    border-radius : 50px;
+    background-color : #969595 !important;
     
 };

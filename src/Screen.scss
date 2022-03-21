@@ -1,5 +1,41 @@
 #screen{
     height: 300px;
-    width: 398px;
-    border: 1px solid black;
+    width: 100%;
+    border: 2px solid black;
+    position: relative;
+    background-image: url("./bg.jpeg");
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+#app-screen{
+    height: 100%;
+    width: 100%;
+    opacity: 85%;
+    background-color: rgb(250, 249, 249);
+
+    h1{
+        margin-top: 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    span{
+        position: absolute;
+        left:50%;
+        transform: translateX(-50%);
+    }
+    animation: slide-left 0.6s;
+
+
+}
+
+@keyframes slide-left {
+    from{
+        transform: translateX(50%);
+    } to {
+        transform: translateX(0);
+    }
 }
