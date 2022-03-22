@@ -73,6 +73,8 @@ class App extends React.Component{
     })
   }
 
+  
+
   changeIndex = (step) => {
     if (this.state.currentMenu === "home"){
       this.changeActiveHomeIndex(step);

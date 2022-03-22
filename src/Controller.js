@@ -38,12 +38,16 @@ class Controller extends React.Component{
         let playButton; 
         if (this.props.currentMenu === "all songs"){
             playButton = <button id = "down" onClick={this.props.actions.onPlayClick} onTouchStart={this.props.actions.onPlayClick}>
-                <FontAwesomeIcon icon={faPlay} />
-            </button>
+                        <FontAwesomeIcon icon={faPlay} />
+                        </button>
+            
+
+
         } else {
             playButton = <button id = "down">
-                <FontAwesomeIcon icon={faPlay} />
-            </button>
+                        <FontAwesomeIcon icon={faPlay} />
+                        </button>
+            
         }
 
         return (
@@ -53,9 +57,11 @@ class Controller extends React.Component{
                     <button id = "left">
                         <FontAwesomeIcon icon={faBackwardFast} />
                     </button>
+
                     <button id = "right">
                         <FontAwesomeIcon icon={faForwardFast} />
                     </button>
+                    
                     <button id = "up" onTouchStart={this.props.actions.onMenuClick} onClick={this.props.actions.onMenuClick}>
                         MENU
                     </button>
