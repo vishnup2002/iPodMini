@@ -15,6 +15,7 @@ class Controller extends React.Component{
         zt.bind(myElement, 'rotate', (e)=>{
             currentAngle+=e.detail.distanceFromLast;
             if (currentAngle>15){
+                
                 currentAngle=0;
                 this.props.actions.onScroll(1);
             } else if (currentAngle<-15){

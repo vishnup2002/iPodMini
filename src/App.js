@@ -9,6 +9,12 @@ class App extends React.Component{
   constructor(){
     super();
     this.state = {
+
+      menuScreens:[
+        "home",
+        "music",
+      ],
+
       home:[
         "cover flow",
         "music",
@@ -22,18 +28,23 @@ class App extends React.Component{
         "albums",
       ],
 
-      selectedMusicIndex: 0,
-      selectedHomeIndex: 0,
+      currentIndex:{
+        home: 0,
+        music:0,
+      },
+
       currentMenu: "home",
 
       stack:[],
     }
   }
 
+  //operation to push the current menu into the stack
   push = (title)=>{
     this.state.stack.push(title);
   }
 
+  //operation to pop the previous menu from the stack
   pop = ()=>{
     if (this.state.stack.length === 0){
       return null;
@@ -42,25 +53,7 @@ class App extends React.Component{
   }
 
 
-  changeActiveMusicIndex = (step)=>{
-    this.setState((prevState)=>{
-      return {
-        selectedMusicIndex: (((prevState.selectedMusicIndex+step)%this.state.music.length)+this.state.music.length)%this.state.music.length,
-      }
-    }
-    
-    )
-  }
-
-  changeActiveHomeIndex = (step)=>{
-    this.setState((prevState)=>{
-      return {
-        selectedHomeIndex: (((prevState.selectedHomeIndex+step)%this.state.home.length)+this.state.home.length)%this.state.home.length,
-      }
-
-    })
-  }
-
+  //handling click on center button
   handleClickHome = (index) => {
     
     this.setState((prevState)=>{
@@ -74,15 +67,27 @@ class App extends React.Component{
   }
 
   
+  //changing the highlighted menu on rotating the wheel
+  changeIndex = (step)=>{
+    const currentMenu = this.state.currentMenu;
+    const menuScreens = this.state.menuScreens;
+    if (menuScreens.includes(currentMenu)){
+      
+      this.setState((prevState)=>{
+        const length = prevState[prevState.currentMenu].length;
+        const currentIndex = prevState.currentIndex[currentMenu];
+        const nextIndex = (((currentIndex+step)%length)+length)%length;
+        const newIndex = JSON.parse(JSON.stringify(this.state.currentIndex));
+        newIndex[currentMenu] = nextIndex;
 
-  changeIndex = (step) => {
-    if (this.state.currentMenu === "home"){
-      this.changeActiveHomeIndex(step);
-    } else {
-      this.changeActiveMusicIndex(step);
+        return {
+          currentIndex: newIndex,
+        }
+      })
     }
   }
 
+  //handling click on menu button ie going back to the previous screen
   handleClickMenu = () => {
     this.setState((prevState)=>{
       const ele = this.pop();
@@ -91,13 +96,21 @@ class App extends React.Component{
           currentMenu: ele
         }
       }
+
+      const currentIndex = JSON.parse(JSON.stringify(this.state.currentIndex));
+      Object.keys(currentIndex).map(function(key,index){
+        currentIndex[key] = 0;
+      });
+      
+      
       return {
-          selectedHomeIndex:0
-        }
+        currentIndex,
+      }
       
     })
   }
 
+  //handling click on play button to play/pause the musics
   handleClickPlay = ()=>{
     const player = document.getElementById("music-player");
     if (player.paused){
@@ -108,27 +121,26 @@ class App extends React.Component{
   }
 
   render(){
-
+ 
     const currentMenu = this.state.currentMenu;
-    let ele,index,isEmpty;
-    if (["settings","games","cover flow","all songs","artists","albums"].includes(currentMenu)){
-      isEmpty=false;
-      ele = <Screen props = {{currentMenu,isEmpty}}></Screen>
-    } else {
+    let ele,index,isEmpty,items;
+    const menuScreens = this.state.menuScreens; 
+    if (menuScreens.includes(currentMenu)){
       isEmpty = true;
-      const items = this.state[currentMenu];
-      
-      if (currentMenu === "home"){
-        index = this.state.selectedHomeIndex;
-      } else {
-        index = this.state.selectedMusicIndex;
-      }
+      items = this.state[currentMenu];
+      index = this.state.currentIndex[currentMenu];
       ele = <Screen props = {{
         items,
         index,
         currentMenu,
         isEmpty,
       }}/>
+
+    } 
+    
+    else {
+      isEmpty=false;
+      ele = <Screen props = {{currentMenu,isEmpty}}></Screen>
     
     }
 
