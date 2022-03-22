@@ -4,6 +4,7 @@ import './App.scss';
 import Controller from './Controller';
 import Screen from './Screen';
 
+
 class App extends React.Component{
 
   constructor(){
@@ -100,6 +101,7 @@ class App extends React.Component{
       const currentIndex = JSON.parse(JSON.stringify(this.state.currentIndex));
       Object.keys(currentIndex).map(function(key,index){
         currentIndex[key] = 0;
+        return null;
       });
       
       

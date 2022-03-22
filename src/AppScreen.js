@@ -1,5 +1,6 @@
 import {getStorage, ref, getDownloadURL} from "firebase/storage";
 import React from "react";
+import { Audio } from  'react-loader-spinner';
 
 //function to fetch the url of the audio
 const getURL = async ()=>{
@@ -45,7 +46,15 @@ class AppScreen extends React.Component{
                     <h1>{this.props.title}</h1>
                 </div>
 
-                {(this.props.title==="all songs" && ((this.state.url!=="" && ele)||<span>Loading...</span>))}
+                {(this.props.title==="all songs" && ((this.state.url!=="" && ele)||
+                <span>
+                    <Audio
+                        height="100"
+                        width="100"
+                        color='grey'
+                        ariaLabel='loading'
+                    />
+                </span>))}
 
                 
 
